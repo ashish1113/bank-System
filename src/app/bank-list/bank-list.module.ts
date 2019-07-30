@@ -4,7 +4,7 @@ import { BankDashboardComponent } from './bank-dashboard/bank-dashboard.componen
 import { BankDetailsService } from '../bank-details.service';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
-import { SearchFilterPipe } from '../search-filter.pipe';
+//import { SearchFilterPipe } from '../search-filter.pipe';
 import { AppModule } from '../app.module';
 import { HttpClientModule } from '@angular/common/http';
 

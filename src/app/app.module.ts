@@ -7,13 +7,13 @@ import{BankDashboardComponent}from"./bank-list/bank-dashboard/bank-dashboard.com
 import{BankDetailsService}from"./bank-details.service"
 
 import { AppComponent } from './app.component';
-import { SearchFilterPipe } from './search-filter.pipe';
+//import { SearchFilterPipe } from './search-filter.pipe';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchFilterPipe
+   
   ],
   imports: [
     BrowserModule,
@@ -29,6 +29,6 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [BankDetailsService],
   bootstrap: [AppComponent],
-  exports:[SearchFilterPipe]
+  // exports:[SearchFilterPipe]
 })
 export class AppModule { }

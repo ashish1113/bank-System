@@ -1,4 +1,4 @@
-import { Component, OnInit ,OnChanges} from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { BankDetailsService } from './../../bank-details.service';
 
 @Component({
@@ -6,11 +6,11 @@ import { BankDetailsService } from './../../bank-details.service';
   templateUrl: './bank-dashboard.component.html',
   styleUrls: ['./bank-dashboard.component.css']
 })
-export class BankDashboardComponent implements OnInit { 
+export class BankDashboardComponent implements OnInit {
 
   private _searchState
   public bankList = [];
-  
+
 
   p: Number = 1;
   count: Number = 5;
@@ -20,10 +20,8 @@ export class BankDashboardComponent implements OnInit {
   filteredbanksByStateList: any;
   bankListFlag: boolean = false
 
-  // We are binding to this property in the view template, so this
-  // getter is called when the binding needs to read the value
 
- 
+
   get searchTerm1(): string {
     console.log("search term get called")
     return this._searchTerm1;
@@ -31,13 +29,13 @@ export class BankDashboardComponent implements OnInit {
 
 
   set searchTerm1(value: string) {
-    console.log("searchterm set called",value)
+    console.log("searchterm set called", value)
     this._searchTerm1 = value;
     this.filteredbanks = this.filterEmployees(value);
-    console.log("filter bank are",this.filteredbanks)
-  
+    console.log("filter bank are", this.filteredbanks)
+
   }
-  
+
 
   get searchState(): string {
     console.log("search state get called")
@@ -45,65 +43,62 @@ export class BankDashboardComponent implements OnInit {
   }
 
   set searchState(value: string) {
-      console.log("searchStateset called",value)
-     
-      this._searchState = value
-      this.filteredbanksByStateList = this.filterByState(value);
-      this.filteredbanks=this.filteredbanksByStateList;
-      console.log("filter bank are 2",this.filteredbanksByStateList)
-    }
+    console.log("searchStateset called", value)
 
-  // This setter is called everytime the value in the search text box changes
-  
+    this._searchState = value
+    this.filteredbanksByStateList = this.filterByState(value);
+    this.filteredbanks = this.filteredbanksByStateList;
+    console.log("filter bank are 2", this.filteredbanksByStateList)
+  }
 
- 
-  constructor(public bankDetailsService:BankDetailsService) { }
+
+
+
+
+  constructor(public bankDetailsService: BankDetailsService) { }
   ngOnChanges() {
     console.log("on change called")
   }
   ngOnInit() {
 
-    // console.log(this.searchState)
-   this.getBankData()
-  
+
+    this.getBankData()
+
   }
 
   filterEmployees(searchString: string) {
     return this.filteredbanksByStateList.filter(bank =>
-     (bank.bank_name.toLowerCase().indexOf(searchString.toLowerCase()) !== -1)||
-     (bank.branch.toLowerCase().indexOf(searchString.toLowerCase()) !== -1) ||
-     (bank.district.toLowerCase().indexOf(searchString.toLowerCase()) !== -1));
+      (bank.bank_name.toLowerCase().indexOf(searchString.toLowerCase()) !== -1) ||
+      (bank.branch.toLowerCase().indexOf(searchString.toLowerCase()) !== -1) ||
+      (bank.district.toLowerCase().indexOf(searchString.toLowerCase()) !== -1));
   }
- 
 
-  
-  
-  public getBankData =() =>{
-   // this.bankList = this.bankDetailsService.getBankDetailList()
-   this.getAllBanks()
-    // this.filteredbanks= this.bankList,
-    // this.filteredbanksByStateList = this.bankList
-    console.log("the second data is",this.filteredbanks)
+
+
+
+  public getBankData = () => {
+    this.getAllBanks()
+
   }
   public getAllBanks: any = () => {
-    console.log("get all ---bank called")
-     this.bankDetailsService.getAllBanks().subscribe((apiResponse) => {
+
+    this.bankDetailsService.getAllBanks().subscribe((apiResponse) => {
       console.log(apiResponse);
 
       this.bankList = apiResponse
-      this.filteredbanks= this.bankList,
-    this.filteredbanksByStateList = this.bankList
-    this.bankListFlag = true
-     
-      
+      this.filteredbanks = this.bankList,
+        this.filteredbanksByStateList = this.bankList
+      this.bankListFlag = true
+
+
 
     })
   } // end of get all issues.
-  public filterByState =(stateValue:String) =>{
-    this._searchTerm1 ="";
-    console.log("here is the state ",stateValue)
+  public filterByState = (stateValue: String) => {
+    this._searchTerm1 = "";
+
     return this.bankList.filter(bank =>
-     
+
       (bank.city.toLowerCase().indexOf(stateValue.toLowerCase()) !== -1));
 
   }
