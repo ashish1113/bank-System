@@ -8,6 +8,7 @@ import{BankDetailsService}from"./bank-details.service"
 
 import { AppComponent } from './app.component';
 import { SearchFilterPipe } from './search-filter.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SearchFilterPipe } from './search-filter.pipe';
   imports: [
     BrowserModule,
     BankListModule,
+    HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
       { path:'BankList', component: BankDashboardComponent, pathMatch: 'full'},

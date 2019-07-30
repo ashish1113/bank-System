@@ -18,6 +18,7 @@ export class BankDashboardComponent implements OnInit {
   public _searchTerm1: string;
   filteredbanks: any;
   filteredbanksByStateList: any;
+  bankListFlag: boolean = false
 
   // We are binding to this property in the view template, so this
   // getter is called when the binding needs to read the value
@@ -64,6 +65,7 @@ export class BankDashboardComponent implements OnInit {
 
     // console.log(this.searchState)
    this.getBankData()
+  
   }
 
   filterEmployees(searchString: string) {
@@ -77,11 +79,26 @@ export class BankDashboardComponent implements OnInit {
   
   
   public getBankData =() =>{
-    this.bankList = this.bankDetailsService.getBankDetailList()
-    this.filteredbanks= this.bankList,
-    this.filteredbanksByStateList = this.bankList
+   // this.bankList = this.bankDetailsService.getBankDetailList()
+   this.getAllBanks()
+    // this.filteredbanks= this.bankList,
+    // this.filteredbanksByStateList = this.bankList
     console.log("the second data is",this.filteredbanks)
   }
+  public getAllBanks: any = () => {
+    console.log("get all ---bank called")
+     this.bankDetailsService.getAllBanks().subscribe((apiResponse) => {
+      console.log(apiResponse);
+
+      this.bankList = apiResponse
+      this.filteredbanks= this.bankList,
+    this.filteredbanksByStateList = this.bankList
+    this.bankListFlag = true
+     
+      
+
+    })
+  } // end of get all issues.
   public filterByState =(stateValue:String) =>{
     this._searchTerm1 ="";
     console.log("here is the state ",stateValue)
