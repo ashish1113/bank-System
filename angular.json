@@ -24,13 +24,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "/home/ashish/bankQ/BankAppQ/node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
-              "/home/ashish/bankQ/BankAppQ/node_modules/jquery/dist/jquery.min.js",
-             
-              "/home/ashish/bankQ/BankAppQ/node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "/home/ashish/bankQ/BankAppQ/node_modules/popper.js/dist/popper.min.js"
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/popper.js/dist/popper.min.js"
             ]
           },
           "configurations": {
