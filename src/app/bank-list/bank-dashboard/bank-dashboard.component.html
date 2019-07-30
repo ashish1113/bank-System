@@ -1,0 +1,114 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-dark bg-primary w-100">
+        <span class="navbar-brand mb-0 h1">Bank Branches</span>
+      </nav>
+      <!-- <div class="btn-group">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Right-aligned menu
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <button class="dropdown-item" type="button">Action</button>
+            <button class="dropdown-item" type="button">Another action</button>
+            <button class="dropdown-item" type="button">Something else here</button>
+          </div>
+        </div> -->
+        <!-- <label for="exampleFormControlSelect1">Example select</label> -->
+
+         <div class="row mt-2">
+          <!--<div class="col-md-4 col-sm-6">
+       
+      </div> -->
+      <div class="col">
+          <form>
+            <div class="row">
+              <div class="col-sm-4 mb-1">
+                  <select class="form-control   " id="exampleFormControlSelect1" [(ngModel)]="searchState"
+                  name="searchState" placeholder="Search">
+                  <option value="" disabled selected hidden>Please Choose...</option>
+                  <!-- <option value="" class="bg-info flex-fill ">Select your option</option> -->
+                  <option >MUMBAI</option>
+                  <option>ALLAHABAD</option>
+                  <option>BANGALORE</option>
+                  <option>KOLKATA</option>
+                    </select>
+                    <!-- <button (click)="sayHello()">Home</button> -->
+              </div>
+              <div class="col mb-1">
+                <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchTerm1"  name="searchTerm">
+              </div>
+            </div>
+          </form>
+      </div>
+       <div class="col-12 ">
+          <!-- <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">ifsc</th>
+                  <th scope="col">branch</th>
+                  <th scope="col">"bank_name"</th>
+                  <th scope="col">city</th>
+                  <th scope="col">"state"</th>
+                
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">ABHY0065001</th>
+                  <td>"RTGS-HO"</td>
+                  <td>ABHYUDAYA COOPERATIVE BANK LIMITED</td>
+                  <td>"MUMBAI"</td>
+                  <td>""MAHARASHTRA""</td>
+                </tr>
+                <tr>
+                    <th scope="row">ABHY0065001</th>
+                    <td>"RTGS-HO"</td>
+                    <td>ABHYUDAYA COOPERATIVE BANK LIMITED</td>
+                    <td>"MUMBAI"</td>
+                    <td>""MAHARASHTRA""</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">ABHY0065001</th>
+                      <td>"RTGS-HO"</td>
+                      <td>ABHYUDAYA COOPERATIVE BANK LIMITED</td>
+                      <td>"MUMBAI"</td>
+                      <td>""MAHARASHTRA""</td>
+                    </tr>
+              </tbody>
+            </table> -->
+
+            <table class='table table-bordered table-condensed table-striped table-hover'>
+            <thead class="thead-dark">
+              <tr>
+                <th>ifsc</th>
+                <th>branch</th>
+                <th>bank_name</th>
+                <th>city</th>
+                <th>state</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="clearfix cursorPointer"
+                *ngFor="let bank of filteredbanks  | paginate: { itemsPerPage: count, currentPage: p }"
+                >
+                <td>{{bank.ifsc}}</td>
+                <td>{{bank.branch}}</td>
+                <td>{{bank.bank_name}}</td>
+                <td>{{bank.city}}</td>
+                <td>{{bank.state}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+       </div>
+
+       <br>
+       <div class=" justify-content: center;">
+         <pagination-controls (pageChange)="p = $event"></pagination-controls>
+       </div>
+      
+        </div>
+       
+
+
+</div>
